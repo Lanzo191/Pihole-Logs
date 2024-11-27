@@ -1,0 +1,528 @@
+This process collects information from your Pi-hole, and optionally uploads it to a unique and random directory on tricorder.pi-hole.net.
+
+The intent of this script is to allow users to self-diagnose their installations.  This is accomplished by running tests against our software and providing the user with links to FAQ articles when a problem is detected.  Since we are a small team and Pi-hole has been growing steadily, it is our hope that this will help us spend more time on development.
+
+NOTE: All log files auto-delete after 48 hours and ONLY the Pi-hole developers can access your data via the given token. We have taken these extra steps to secure your data and will work to further reduce any personal information gathered.
+
+*** [ INITIALIZING ]
+[i] 2024-11-27:01:23:48 debug log has been initialized.
+[i] System has been running for 0 days, 1 hours, 1 minutes
+
+*** [ INITIALIZING ] Sourcing setup variables
+[i] Sourcing /etc/pihole/setupVars.conf...
+
+*** [ DIAGNOSING ]: Core version
+[✓] Version: v5.18.3
+[i] Remotes: origin	https://github.com/pi-hole/pi-hole.git (fetch)
+             origin	https://github.com/pi-hole/pi-hole.git (push)
+[i] Branch: master
+[i] Commit: v5.18.3-0-gbe5a8dc
+
+*** [ DIAGNOSING ]: Web version
+[✓] Version: v5.21
+[i] Remotes: origin	https://github.com/pi-hole/web.git (fetch)
+             origin	https://github.com/pi-hole/web.git (push)
+[i] Branch: master
+[i] Commit: v5.21-0-gbe05b0f
+
+*** [ DIAGNOSING ]: FTL version
+[✓] Version: v5.25.2
+[i] Branch: master
+[i] Commit: 8943e260
+
+*** [ DIAGNOSING ]: lighttpd version
+[i] 1.4.59
+
+*** [ DIAGNOSING ]: php version
+[i] 7.4.33
+
+*** [ DIAGNOSING ]: Operating system
+[i] Pi-hole Docker Container: 2024.07.0
+[✓] Distro:  Debian
+[✓] Version: 11
+[✓] dig return code: 0
+[i] dig response: "Raspbian=11,12 Ubuntu=20,22,23,24 Debian=11,12 Fedora=40,41 CentOS=9"
+[✓] Distro and version supported
+
+*** [ DIAGNOSING ]: SELinux
+[i] SELinux not detected
+
+*** [ DIAGNOSING ]: FirewallD
+[✓] Firewalld service not detected
+
+*** [ DIAGNOSING ]: Processor
+[✓] aarch64
+
+*** [ DIAGNOSING ]: Disk usage
+   Filesystem      Size  Used Avail Use% Mounted on
+   overlay          58G  6.9G   49G  13% /
+   tmpfs            64M     0   64M   0% /dev
+   shm              64M  1.2M   63M   2% /dev/shm
+   /dev/mmcblk0p2   58G  6.9G   49G  13% /etc/pihole
+   tmpfs           1.9G     0  1.9G   0% /proc/asound
+   tmpfs           1.9G     0  1.9G   0% /proc/scsi
+   tmpfs           1.9G     0  1.9G   0% /sys/firmware
+
+*** [ DIAGNOSING ]: Network interfaces and addresses
+   1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+       link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+       inet 127.0.0.1/8 scope host lo
+          valid_lft forever preferred_lft forever
+       inet6 ::1/128 scope host 
+          valid_lft forever preferred_lft forever
+   71: eth0@if72: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+       link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+       inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+          valid_lft forever preferred_lft forever
+
+*** [ DIAGNOSING ]: Network routing table
+   default via 172.17.0.1 dev eth0 
+   172.17.0.0/16 dev eth0 proto kernel scope link src 172.17.0.3 
+
+*** [ DIAGNOSING ]: Networking
+[✓] IPv4 address(es) bound to the eth0 interface:
+    172.17.0.3/16
+
+[✗] No IPv6 address(es) found on the eth0 interface.
+
+[i] Default IPv4 gateway(s):
+     172.17.0.1
+   * Pinging first gateway 172.17.0.1...
+[✓] Gateway responded.
+[i] Default IPv6 gateway(s):
+
+*** [ DIAGNOSING ]: Name resolution (IPv4) using a random blocked domain and a known ad-serving domain
+[✓] 202.173.31.53.c752sa3k9oeb2eg2ehpgc8fnhkeyyyyyn.domsearch.net is 0.0.0.0 on lo (127.0.0.1)
+[✓] 202.173.31.53.c752sa3k9oeb2eg2ehpgc8fnhkeyyyyyn.domsearch.net is 0.0.0.0 on eth0 (172.17.0.3)
+[✓] doubleclick.com is 172.217.16.238 via a remote, public DNS server (8.8.8.8)
+
+*** [ DIAGNOSING ]: Name resolution (IPv6) using a random blocked domain and a known ad-serving domain
+[✓] www.szpilki-na-giewoncie.blogspot.com is :: on lo (::1)
+[✓] No IPv6 address available on eth0
+[✗] Failed to resolve doubleclick.com via a remote, public DNS server (2001:4860:4860::8888)
+
+*** [ DIAGNOSING ]: Discovering active DHCP servers (takes 10 seconds)
+   Scanning all your interfaces for DHCP servers
+   Timeout: 10 seconds
+   DHCP packets received on interface eth0: 0
+
+*** [ DIAGNOSING ]: Pi-hole processes
+[✓] lighttpd daemon is active
+[✓] pihole-FTL daemon is active
+
+*** [ DIAGNOSING ]: Pi-hole-FTL full status
+[i] systemctl:  command not found
+
+*** [ DIAGNOSING ]: Lighttpd configuration test
+[✓] No error in lighttpd configuration
+
+*** [ DIAGNOSING ]: Setup variables
+    INSTALL_WEB_INTERFACE=true
+    PIHOLE_DNS_1=8.8.8.8
+    PIHOLE_DNS_2=8.8.4.4
+    PIHOLE_INTERFACE=eth0
+    QUERY_LOGGING=true
+    BLOCKING_ENABLED=true
+
+*** [ DIAGNOSING ]: Dashboard headers
+[✓] Web interface X-Header: X-Pi-hole: The Pi-hole Web interface is working!
+
+*** [ DIAGNOSING ]: Pi-hole FTL Query Database
+-rw-rw-r-- 1 pihole pihole 472K Nov 27 01:24 /etc/pihole/pihole-FTL.db
+
+*** [ DIAGNOSING ]: Gravity Database
+-rw-rw-r-- 1 pihole pihole 6.9M Nov 27 01:13 /etc/pihole/gravity.db
+
+*** [ DIAGNOSING ]: Info table
+   property              value                                   
+   --------------------  ----------------------------------------
+   version               15                                      
+   updated               1732670012                              
+   gravity_count         121039                                  
+   Last gravity run finished at: Wed Nov 27 01:13:32 GMT 2024
+
+   ----- First 10 Gravity Domains -----
+   localhost.localdomain
+   ad-assets.futurecdn.net
+   ck.getcookiestxt.com
+   eu1.clevertap-prod.com
+   wizhumpgyros.com
+   coccyxwickimp.com
+   webmail-who-int.000webhostapp.com
+   010sec.com
+   01mspmd5yalky8.com
+   0byv9mgbn0.com
+
+
+*** [ DIAGNOSING ]: Groups
+   id    enabled  name                                                date_added           date_modified        description                                       
+   ----  -------  --------------------------------------------------  -------------------  -------------------  --------------------------------------------------
+   0           1  Default                                             2024-11-27 00:28:09  2024-11-27 00:28:09  The default group                                 
+
+*** [ DIAGNOSING ]: Domainlist (0/1 = exact white-/blacklist, 2/3 = regex white-/blacklist)
+
+*** [ DIAGNOSING ]: Clients
+
+*** [ DIAGNOSING ]: Adlists
+   id     enabled  group_ids     address                                                                                               date_added           date_modified        comment                                           
+   -----  -------  ------------  ----------------------------------------------------------------------------------------------------  -------------------  -------------------  --------------------------------------------------
+   1            1  0             https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts                                      2024-11-27 00:28:09  2024-11-27 00:28:09  Migrated from /etc/pihole/adlists.list            
+
+*** [ DIAGNOSING ]: contents of /etc/pihole
+
+-rw-r--r-- 1 root root 0 Nov 27 00:28 /etc/pihole/custom.list
+
+-rw-r--r-- 1 root root 65 Nov 27 01:13 /etc/pihole/local.list
+
+-rw-r--r-- 1 root root 289 Nov 27 00:28 /etc/pihole/logrotate
+   /var/log/pihole/pihole.log {
+       su root root
+       daily
+       copytruncate
+       rotate 5
+       compress
+       delaycompress
+       notifempty
+       nomail
+   }
+   /var/log/pihole/FTL.log {
+       su root root
+       weekly
+       copytruncate
+       rotate 3
+       compress
+       delaycompress
+       notifempty
+       nomail
+   }
+
+-rw-rw-r-- 1 pihole root 157 Nov 27 01:13 /etc/pihole/pihole-FTL.conf
+   MACVENDORDB=/macvendor.db
+   LOCAL_IPV4=0.0.0.0
+
+-rw-r--r-- 1 root root 382 Nov 27 01:13 /etc/pihole/versions
+   CORE_VERSION=v5.18.3
+   CORE_BRANCH=master
+   CORE_HASH=be5a8dc5
+   GITHUB_CORE_VERSION=v5.18.3
+   GITHUB_CORE_HASH=7128c18b
+   WEB_VERSION=v5.21
+   WEB_BRANCH=master
+   WEB_HASH=be05b0f6
+   GITHUB_WEB_VERSION=v5.21
+   GITHUB_WEB_HASH=5c8945c8
+   FTL_VERSION=v5.25.2
+   FTL_BRANCH=master
+   FTL_HASH=8943e260
+   GITHUB_FTL_VERSION=v5.25.2
+   GITHUB_FTL_HASH=61a211f1
+   DOCKER_VERSION=2024.07.0
+   GITHUB_DOCKER_VERSION=2024.07.0
+
+*** [ DIAGNOSING ]: contents of /etc/dnsmasq.d
+
+-rw-r--r-- 1 root root 1.4K Nov 27 01:13 /etc/dnsmasq.d/01-pihole.conf
+   addn-hosts=/etc/pihole/local.list
+   addn-hosts=/etc/pihole/custom.list
+   localise-queries
+   no-resolv
+   log-queries
+   log-facility=/var/log/pihole/pihole.log
+   log-async
+   cache-size=10000
+   server=8.8.8.8
+   server=8.8.4.4
+   interface=eth0
+
+-rw-r--r-- 1 root root 2.2K Nov 27 01:13 /etc/dnsmasq.d/06-rfc6761.conf
+   server=/test/
+   server=/localhost/
+   server=/invalid/
+   server=/bind/
+   server=/onion/
+
+*** [ DIAGNOSING ]: contents of /etc/lighttpd
+
+-rw-r--r-- 1 root root 2.2K Jan 19  2022 /etc/lighttpd/lighttpd.conf
+   server.modules = (
+   	"mod_indexfile",
+   	"mod_access",
+   	"mod_alias",
+    	"mod_redirect",
+   )
+   server.document-root        = "/var/www/html"
+   server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+   server.errorlog             = "/var/log/lighttpd/error.log"
+   server.pid-file             = "/run/lighttpd.pid"
+   server.username             = "www-data"
+   server.groupname            = "www-data"
+   server.port                 = 80
+   server.feature-flags       += ("server.h2proto" => "enable")
+   server.feature-flags       += ("server.h2c"     => "enable")
+   server.feature-flags       += ("server.graceful-shutdown-timeout" => 5)
+   server.http-parseopts = (
+     "header-strict"           => "enable",# default
+     "host-strict"             => "enable",# default
+     "host-normalize"          => "enable",# default
+     "url-normalize-unreserved"=> "enable",# recommended highly
+     "url-normalize-required"  => "enable",# recommended
+     "url-ctrls-reject"        => "enable",# recommended
+     "url-path-2f-decode"      => "enable",# recommended highly (unless breaks app)
+     "url-path-dotseg-remove"  => "enable",# recommended highly (unless breaks app)
+   )
+   index-file.names            = ( "index.php", "index.html" )
+   url.access-deny             = ( "~", ".inc" )
+   static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+   include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
+   include_shell "/usr/share/lighttpd/create-mime.conf.pl"
+   include "/etc/lighttpd/conf-enabled/*.conf"
+   server.modules += (
+   	"mod_dirlisting",
+   	"mod_staticfile",
+   )
+
+*** [ DIAGNOSING ]: contents of /etc/lighttpd/conf.d
+/etc/lighttpd/conf.d does not exist.
+
+*** [ DIAGNOSING ]: contents of /etc/lighttpd/conf-enabled
+total 4.0K
+lrwxrwxrwx 1 root root  32 Jul  5 19:20 05-setenv.conf -> ../conf-available/05-setenv.conf
+lrwxrwxrwx 1 root root  35 Jul  5 19:20 10-accesslog.conf -> ../conf-available/10-accesslog.conf
+lrwxrwxrwx 1 root root  33 Jul  5 19:20 10-fastcgi.conf -> ../conf-available/10-fastcgi.conf
+-rw-r--r-- 1 root root 216 Nov 27 01:13 15-pihole-admin-redirect-docker.conf
+lrwxrwxrwx 1 root root  38 Jul  5 19:20 15-pihole-admin.conf -> ../conf-available/15-pihole-admin.conf
+
+lrwxrwxrwx 1 root root 38 Jul  5 19:20 /etc/lighttpd/conf-enabled/15-pihole-admin.conf -> ../conf-available/15-pihole-admin.conf
+   server.errorlog := "/var/log/lighttpd/error-pihole.log"
+   $HTTP["url"] =~ "^/admin/" {
+       server.document-root = "/var/www/html"
+       server.stream-response-body = 1
+       accesslog.filename = "/var/log/lighttpd/access-pihole.log"
+       accesslog.format = "%{%s}t|%h|%V|%r|%s|%b"
+       fastcgi.server = (
+           ".php" => (
+               "localhost" => (
+                   "socket" => "/run/lighttpd/pihole-php-fastcgi.socket",
+                   "bin-path" => "/usr/bin/php-cgi",
+                   "min-procs" => 1,
+                   "max-procs" => 1,
+                   "bin-environment" => (
+                       "TZ" => "Europe/London",
+                       "PIHOLE_DOCKER_TAG" => "",
+                       "PHP_ERROR_LOG" => "/var/log/lighttpd/error-pihole.log",
+                       "CORS_HOSTS" => "",
+                       "VIRTUAL_HOST" => "pi.hole",
+                       "PHP_FCGI_CHILDREN" => "4",
+                       "PHP_FCGI_MAX_REQUESTS" => "10000",
+                   ),
+                   "bin-copy-environment" => (
+                       "PATH", "SHELL", "USER"
+                   ),
+                   "broken-scriptfilename" => "enable",
+               )
+           )
+       )
+       setenv.add-response-header = (
+           "X-Pi-hole" => "The Pi-hole Web interface is working!",
+           "X-Frame-Options" => "DENY",
+           "X-XSS-Protection" => "0",
+           "X-Content-Type-Options" => "nosniff",
+           "Content-Security-Policy" => "default-src 'self' 'unsafe-inline';",
+           "X-Permitted-Cross-Domain-Policies" => "none",
+           "Referrer-Policy" => "same-origin"
+       )
+       $HTTP["url"] =~ "^/admin/\." {
+           url.access-deny = ("")
+       }
+       $HTTP["url"] =~ "/(teleporter|api_token)\.php$" {
+           $HTTP["referer"] =~ "/admin/settings\.php" {
+               setenv.set-response-header = ( "X-Frame-Options" => "SAMEORIGIN" )
+           }
+       }
+   }
+   else $HTTP["url"] == "/admin" {
+       url.redirect = ("" => "/admin/")
+   }
+   $HTTP["host"] == "pi.hole" {
+       $HTTP["url"] == "/" {
+           url.redirect = ("" => "/admin/")
+       }
+   }
+   server.modules += ( "mod_access", "mod_accesslog", "mod_redirect", "mod_fastcgi", "mod_setenv" )
+
+*** [ DIAGNOSING ]: contents of /etc/cron.d
+
+-rw-r--r-- 1 root root 1.7K Nov 27 01:13 /etc/cron.d/pihole
+   18 4   * * 7   root    PATH="$PATH:/usr/sbin:/usr/local/bin/" pihole updateGravity >/var/log/pihole/pihole_updateGravity.log || cat /var/log/pihole/pihole_updateGravity.log
+   00 00   * * *   root    PATH="$PATH:/usr/sbin:/usr/local/bin/" pihole flush once quiet
+   @reboot root /usr/sbin/logrotate --state /var/lib/logrotate/pihole /etc/pihole/logrotate
+   7 15  * * *   root    PATH="$PATH:/usr/sbin:/usr/local/bin/" pihole updatechecker
+   @reboot root    PATH="$PATH:/usr/sbin:/usr/local/bin/" pihole updatechecker reboot
+
+*** [ DIAGNOSING ]: contents of /var/log/lighttpd
+
+-rw-r--r-- 1 www-data www-data 69 Nov 27 01:13 /var/log/lighttpd/error-pihole.log
+   -----head of error-pihole.log------
+   2024-11-27 01:13:28: server.c.1513) server started (lighttpd/1.4.59)
+
+   -----tail of error-pihole.log------
+   2024-11-27 01:13:28: server.c.1513) server started (lighttpd/1.4.59)
+
+*** [ DIAGNOSING ]: contents of /var/log/pihole
+
+-rw-r--r-- 1 pihole pihole 6.5K Nov 27 01:13 /var/log/pihole/FTL.log
+   -----head of FTL.log------
+   [2024-11-27 01:13:28.897 264M] Using log file /var/log/pihole/FTL.log
+   [2024-11-27 01:13:28.898 264M] ########## FTL started on pihole! ##########
+   [2024-11-27 01:13:28.898 264M] FTL branch: master
+   [2024-11-27 01:13:28.898 264M] FTL version: v5.25.2
+   [2024-11-27 01:13:28.898 264M] FTL commit: 8943e260
+   [2024-11-27 01:13:28.898 264M] FTL date: 2024-05-08 20:59:50 +0100
+   [2024-11-27 01:13:28.898 264M] FTL user: pihole
+   [2024-11-27 01:13:28.898 264M] Compiled for aarch64 (compiled on CI) using aarch64-linux-gnu-gcc (Debian 8.3.0-2) 8.3.0
+   [2024-11-27 01:13:28.898 264M] Starting config file parsing (/etc/pihole/pihole-FTL.conf)
+   [2024-11-27 01:13:28.899 264M]    SOCKET_LISTENING: only local
+   [2024-11-27 01:13:28.899 264M]    AAAA_QUERY_ANALYSIS: Show AAAA queries
+   [2024-11-27 01:13:28.899 264M]    MAXDBDAYS: max age for stored queries is 365 days
+   [2024-11-27 01:13:28.899 264M]    RESOLVE_IPV6: Resolve IPv6 addresses
+   [2024-11-27 01:13:28.899 264M]    RESOLVE_IPV4: Resolve IPv4 addresses
+   [2024-11-27 01:13:28.899 264M]    DBINTERVAL: saving to DB file every minute
+   [2024-11-27 01:13:28.899 264M]    DBFILE: Using /etc/pihole/pihole-FTL.db
+   [2024-11-27 01:13:28.900 264M]    MAXLOGAGE: Importing up to 24.0 hours of log data
+   [2024-11-27 01:13:28.900 264M]    PRIVACYLEVEL: Set to 0
+   [2024-11-27 01:13:28.900 264M]    IGNORE_LOCALHOST: Show queries from localhost
+   [2024-11-27 01:13:28.900 264M]    BLOCKINGMODE: Null IPs for blocked domains
+   [2024-11-27 01:13:28.900 264M]    ANALYZE_ONLY_A_AND_AAAA: Disabled. Analyzing all queries
+   [2024-11-27 01:13:28.900 264M]    DBIMPORT: Importing history from database
+   [2024-11-27 01:13:28.901 264M]    PIDFILE: Using /run/pihole-FTL.pid
+   [2024-11-27 01:13:28.901 264M]    SOCKETFILE: Using /run/pihole/FTL.sock
+   [2024-11-27 01:13:28.901 264M]    SETUPVARSFILE: Using /etc/pihole/setupVars.conf
+   [2024-11-27 01:13:28.901 264M]    MACVENDORDB: Using /macvendor.db
+   [2024-11-27 01:13:28.901 264M]    GRAVITYDB: Using /etc/pihole/gravity.db
+   [2024-11-27 01:13:28.901 264M]    PARSE_ARP_CACHE: Active
+   [2024-11-27 01:13:28.901 264M]    CNAME_DEEP_INSPECT: Active
+   [2024-11-27 01:13:28.902 264M]    DELAY_STARTUP: No delay requested.
+   [2024-11-27 01:13:28.902 264M]    BLOCK_ESNI: Enabled, blocking _esni.{blocked domain}
+   [2024-11-27 01:13:28.902 264M]    NICE: Cannot change niceness to -10 (permission denied)
+   [2024-11-27 01:13:28.902 264M]    MAXNETAGE: Removing IP addresses and host names from network table after 365 days
+   [2024-11-27 01:13:28.902 264M]    NAMES_FROM_NETDB: Enabled, trying to get names from network database
+   [2024-11-27 01:13:28.902 264M]    EDNS0_ECS: Overwrite client from ECS information
+
+   -----tail of FTL.log------
+   [2024-11-27 01:13:28.906 264M] Creating mutex
+   [2024-11-27 01:13:28.906 264M] Creating mutex
+   [2024-11-27 01:13:28.909 264M] PID of FTL process: 264
+   [2024-11-27 01:13:28.912 264M] Database version is 12
+   [2024-11-27 01:13:28.913 264M] Resizing "FTL-strings" from 40960 to (81920 * 1) == 81920 (/dev/shm: 712.7KB used, 67.1MB total, FTL uses 700.8KB)
+   [2024-11-27 01:13:28.914 264M] Imported 0 alias-clients
+   [2024-11-27 01:13:28.915 264M] Database successfully initialized
+   [2024-11-27 01:13:28.949 264M] New upstream server: 8.8.8.8:53 (0/512)
+   [2024-11-27 01:13:28.954 264M] New upstream server: 8.8.4.4:53 (1/512)
+   [2024-11-27 01:13:28.988 264M] Resizing "FTL-queries" from 229376 to (8192 * 56) == 458752 (/dev/shm: 753.7KB used, 67.1MB total, FTL uses 741.7KB)
+   [2024-11-27 01:13:29.026 264M] Resizing "FTL-queries" from 458752 to (12288 * 56) == 688128 (/dev/shm: 983.0KB used, 67.1MB total, FTL uses 971.1KB)
+   [2024-11-27 01:13:29.037 264M] Imported 8917 queries from the long-term database
+   [2024-11-27 01:13:29.038 264M]  -> Total DNS queries: 8917
+   [2024-11-27 01:13:29.038 264M]  -> Cached DNS queries: 8525
+   [2024-11-27 01:13:29.038 264M]  -> Forwarded DNS queries: 328
+   [2024-11-27 01:13:29.038 264M]  -> Blocked DNS queries: 11
+   [2024-11-27 01:13:29.038 264M]  -> Unknown DNS queries: 0
+   [2024-11-27 01:13:29.038 264M]  -> Unique domains: 162
+   [2024-11-27 01:13:29.039 264M]  -> Unique clients: 4
+   [2024-11-27 01:13:29.039 264M]  -> Known forward destinations: 2
+   [2024-11-27 01:13:29.039 264M] Successfully accessed setupVars.conf
+   [2024-11-27 01:13:29.041 264M] listening on 0.0.0.0 port 53
+   [2024-11-27 01:13:29.044 264M] listening on :: port 53
+   [2024-11-27 01:13:29.049 264M] PID of FTL process: 264
+   [2024-11-27 01:13:29.050 264M] Listening on port 4711 for incoming IPv4 telnet connections
+   [2024-11-27 01:13:29.051 264M] Listening on port 4711 for incoming IPv6 telnet connections
+   [2024-11-27 01:13:29.054 264M] Listening on port 4711 for incoming socket telnet connections
+   [2024-11-27 01:13:29.056 264M] INFO: FTL is running as user pihole (UID 999)
+   [2024-11-27 01:13:29.059 264M] Reloading DNS cache
+   [2024-11-27 01:13:29.160 264/T294] Compiled 0 whitelist and 0 blacklist regex filters for 4 clients in 0.9 msec
+   [2024-11-27 01:13:29.161 264/T294] Blocking status is enabled
+   [2024-11-27 01:13:32.432 264M] Reloading DNS cache
+   [2024-11-27 01:13:32.467 264/T294] SQLite3 message: file renamed while open: /etc/pihole/gravity.db (28)
+   [2024-11-27 01:13:32.470 264/T294] Compiled 0 whitelist and 0 blacklist regex filters for 4 clients in 0.8 msec
+   [2024-11-27 01:13:32.471 264/T294] Blocking status is enabled
+
+*** [ DIAGNOSING ]: contents of /dev/shm
+total 1.2M
+-rw------- 1 pihole pihole  84K Nov 27 01:13 FTL-clients
+-rw------- 1 pihole pihole  248 Nov 27 01:13 FTL-counters
+-rw------- 1 pihole pihole 4.0K Nov 27 01:13 FTL-dns-cache
+-rw------- 1 pihole pihole  12K Nov 27 01:13 FTL-domains
+-rw------- 1 pihole pihole  104 Nov 27 01:13 FTL-lock
+-rw------- 1 pihole pihole 8.0K Nov 27 01:13 FTL-overTime
+-rw------- 1 pihole pihole 4.0K Nov 27 01:13 FTL-per-client-regex
+-rw------- 1 pihole pihole 672K Nov 27 01:14 FTL-queries
+-rw------- 1 pihole pihole   16 Nov 27 01:13 FTL-settings
+-rw------- 1 pihole pihole  80K Nov 27 01:23 FTL-strings
+-rw------- 1 pihole pihole 308K Nov 27 01:13 FTL-upstreams
+
+*** [ DIAGNOSING ]: contents of /etc
+
+-rw-r--r-- 1 root root 37 Nov 27 01:13 /etc/dnsmasq.conf
+   conf-dir=/etc/dnsmasq.d
+   user=pihole
+
+-rw-r--r-- 1 root root 246 Nov 27 01:13 /etc/resolv.conf
+   nameserver 192.168.0.1
+   search .
+
+*** [ DIAGNOSING ]: Pi-hole diagnosis messages
+
+*** [ DIAGNOSING ]: Locale
+    LANG=
+
+*** [ DIAGNOSING ]: Pi-hole log
+-rw-r--r-- 1 pihole pihole 15K Nov 27 01:24 /var/log/pihole/pihole.log
+   -----head of pihole.log------
+   Nov 27 01:13:29 dnsmasq[264]: started, version pi-hole-v2.90+1 cachesize 10000
+   Nov 27 01:13:29 dnsmasq[264]: compile time options: IPv6 GNU-getopt no-DBus no-UBus no-i18n IDN DHCP DHCPv6 Lua TFTP no-conntrack ipset no-nftset auth cryptohash DNSSEC loop-detect inotify dumpfile
+   Nov 27 01:13:29 dnsmasq[264]: using nameserver 8.8.8.8#53
+   Nov 27 01:13:29 dnsmasq[264]: using nameserver 8.8.4.4#53
+   Nov 27 01:13:29 dnsmasq[264]: using only locally-known addresses for onion
+   Nov 27 01:13:29 dnsmasq[264]: using only locally-known addresses for bind
+   Nov 27 01:13:29 dnsmasq[264]: using only locally-known addresses for invalid
+   Nov 27 01:13:29 dnsmasq[264]: using only locally-known addresses for localhost
+   Nov 27 01:13:29 dnsmasq[264]: using only locally-known addresses for test
+   Nov 27 01:13:29 dnsmasq[264]: read /etc/hosts - 9 names
+   Nov 27 01:13:29 dnsmasq[264]: read /etc/pihole/custom.list - 0 names
+   Nov 27 01:13:29 dnsmasq[264]: read /etc/pihole/local.list - 0 names
+   Nov 27 01:13:31 dnsmasq[264]: query[PTR] 1.0.168.192.in-addr.arpa from 127.0.0.1
+   Nov 27 01:13:31 dnsmasq[264]: forwarded 1.0.168.192.in-addr.arpa to 8.8.8.8
+   Nov 27 01:13:31 dnsmasq[264]: forwarded 1.0.168.192.in-addr.arpa to 8.8.4.4
+   Nov 27 01:13:31 dnsmasq[264]: reply 1.0.168.192.in-addr.arpa is NXDOMAIN
+   Nov 27 01:13:31 dnsmasq[264]: query[PTR] 66.1.168.192.in-addr.arpa from 127.0.0.1
+   Nov 27 01:13:31 dnsmasq[264]: forwarded 66.1.168.192.in-addr.arpa to 8.8.8.8
+   Nov 27 01:13:31 dnsmasq[264]: reply 66.1.168.192.in-addr.arpa is NXDOMAIN
+   Nov 27 01:13:31 dnsmasq[264]: query[PTR] 6.0.168.192.in-addr.arpa from 127.0.0.1
+
+   -----tail of pihole.log------
+   Nov 27 01:22:18 dnsmasq[264]: reply edge.microsoft.com is <CNAME>
+   Nov 27 01:22:18 dnsmasq[264]: reply edge-microsoft-com.dual-a-0036.a-msedge.net is <CNAME>
+   Nov 27 01:22:18 dnsmasq[264]: reply dual-a-0036.a-msedge.net is 204.79.197.239
+   Nov 27 01:22:18 dnsmasq[264]: reply dual-a-0036.a-msedge.net is 13.107.21.239
+   Nov 27 01:22:18 dnsmasq[264]: reply edge.microsoft.com is <CNAME>
+   Nov 27 01:22:18 dnsmasq[264]: reply edge-microsoft-com.dual-a-0036.a-msedge.net is NODATA
+   Nov 27 01:22:29 dnsmasq[264]: query[A] pi.hole from 127.0.0.1
+   Nov 27 01:22:29 dnsmasq[264]: Pi-hole hostname pi.hole is 0.0.0.0
+   Nov 27 01:23:00 dnsmasq[264]: query[A] pi.hole from 127.0.0.1
+   Nov 27 01:23:00 dnsmasq[264]: Pi-hole hostname pi.hole is 0.0.0.0
+   Nov 27 01:23:30 dnsmasq[264]: query[A] pi.hole from 127.0.0.1
+   Nov 27 01:23:30 dnsmasq[264]: Pi-hole hostname pi.hole is 0.0.0.0
+   Nov 27 01:23:51 dnsmasq[264]: query[A] 202.173.31.53.c752sa3k9oeb2eg2ehpgc8fnhkeyyyyyn.domsearch.net from 127.0.0.1
+   Nov 27 01:23:51 dnsmasq[264]: gravity blocked 202.173.31.53.c752sa3k9oeb2eg2ehpgc8fnhkeyyyyyn.domsearch.net is 0.0.0.0
+   Nov 27 01:23:51 dnsmasq[264]: query[A] 202.173.31.53.c752sa3k9oeb2eg2ehpgc8fnhkeyyyyyn.domsearch.net from 172.17.0.3
+   Nov 27 01:23:51 dnsmasq[264]: gravity blocked 202.173.31.53.c752sa3k9oeb2eg2ehpgc8fnhkeyyyyyn.domsearch.net is 0.0.0.0
+   Nov 27 01:23:51 dnsmasq[264]: query[AAAA] www.szpilki-na-giewoncie.blogspot.com from ::1
+   Nov 27 01:23:51 dnsmasq[264]: gravity blocked www.szpilki-na-giewoncie.blogspot.com is ::
+   Nov 27 01:24:00 dnsmasq[264]: query[A] pi.hole from 127.0.0.1
+   Nov 27 01:24:00 dnsmasq[264]: Pi-hole hostname pi.hole is 0.0.0.0
+
+********************************************
+********************************************
+[✓] ** FINISHED DEBUGGING! **
+
+   * The debug log can be uploaded to tricorder.pi-hole.net for sharing with developers only.
+   * A local copy of the debug log can be found at: /var/log/pihole/pihole_debug.log
