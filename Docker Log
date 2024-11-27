@@ -1,0 +1,195 @@
+
+logo
+Made with ❤️ by IceWhale and YOU!
+
+System status
+18
+CPU
+53°C
+34
+RAM
+3.7 GB
+Storage
+Healthy
+
+Used: 6.85 GB
+Total: 57.97 GB
+16
+Network status
+4 KB/s
+4 KB/s
+Widget settings
+Sync your data
+Use Syncthing to sync your files between multiple devices
+Smarten up your home
+We want to give you a smart home experience with privacy, high speed, and localized storage.
+App
+
+App Store
+
+Files
+
+Portainer
+
+Pi-hole
+
+WireGuard Easy
+
+Sonarr
+
+Radarr
+
+Autobrr
+
+Prowlarr
+
+qBittorrent
+
+FlareSolverr
+
+Bazarr
+
+Jellyseerr
+pihole Settings
+Docker Image *
+
+Tag
+
+Title *
+
+Icon URL
+
+Web UI
+Network
+Port
+Host
+Container
+Protocol
+Volumes
+Host
+Container
+Environment Variables
+Key
+Value
+Devices
+Click “+” to add one.
+Container Command
+Click “+” to add one.
+Privileges
+Memory Limit
+CPU Shares
+Restart Policy
+Container Capabilities (cap-add)
+Container Name
+
+pihole
+pihole  | s6-rc: info: service s6rc-oneshot-runner: starting
+pihole  | s6-rc: info: service s6rc-oneshot-runner successfully started
+pihole  | s6-rc: info: service fix-attrs: starting
+pihole  | s6-rc: info: service fix-attrs successfully started
+pihole  | s6-rc: info: service legacy-cont-init: starting
+pihole  | s6-rc: info: service legacy-cont-init successfully started
+pihole  | s6-rc: info: service cron: starting
+pihole  | s6-rc: info: service cron successfully started
+pihole  | s6-rc: info: service _uid-gid-changer: starting
+pihole  | s6-rc: info: service _uid-gid-changer successfully started
+pihole  | s6-rc: info: service _startup: starting
+pihole  |   [i] Starting docker specific checks & setup for docker pihole/pihole
+pihole  |   [i] Setting capabilities on pihole-FTL where possible
+pihole  |   [i] Applying the following caps to pihole-FTL:
+pihole  |         * CAP_CHOWN
+pihole  |         * CAP_NET_BIND_SERVICE
+pihole  |         * CAP_NET_RAW
+pihole  |   [i] Ensuring basic configuration by re-running select functions from basic-install.sh
+pihole  | 
+pihole  |   [i] Installing configs from /etc/.pihole...
+pihole  |   [i] Existing dnsmasq.conf found... it is not a Pi-hole file, leaving alone!
+pihole  |   [i] Installing /etc/dnsmasq.d/01-pihole.conf...
+[K  [✓] Installed /etc/dnsmasq.d/01-pihole.conf
+pihole  |   [i] Installing /etc/.pihole/advanced/06-rfc6761.conf...
+[K  [✓] Installed /etc/dnsmasq.d/06-rfc6761.conf
+pihole  | 
+pihole  |   [i] Installing latest logrotate script...
+pihole  | 	[i] Existing logrotate file found. No changes made.
+pihole  |   [i] Assigning password defined by Environment Variable
+pihole  |   [✓] New password set
+pihole  |   [i] Added ENV to php:
+pihole  |                     "TZ" => "Europe/London",
+pihole  |                     "PIHOLE_DOCKER_TAG" => "",
+pihole  |                     "PHP_ERROR_LOG" => "/var/log/lighttpd/error-pihole.log",
+pihole  |                     "CORS_HOSTS" => "",
+pihole  |                     "VIRTUAL_HOST" => "pi.hole",
+pihole  |   [i] Using IPv4 and IPv6
+pihole  | 
+pihole  |   [i] Installing latest Cron script...
+[K  [✓] Installing latest Cron script
+pihole  |   [i] setup_blocklists now setting default blocklists up: 
+pihole  |   [i] TIP: Use a docker volume for /etc/pihole/adlists.list if you want to customize for first boot
+pihole  |   [i] Blocklists (/etc/pihole/adlists.list) now set to:
+pihole  | https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+pihole  |   [i] Existing DNS servers detected in setupVars.conf. Leaving them alone
+pihole  |   [i] Applying pihole-FTL.conf setting LOCAL_IPV4=0.0.0.0
+pihole  |   [i] FTL binding to default interface: eth0
+pihole  |   [i] Enabling Query Logging
+pihole  |   [i] Testing lighttpd config: Syntax OK
+pihole  |   [i] All config checks passed, cleared for startup ...
+pihole  |   [i] Docker start setup complete
+pihole  | 
+pihole  |   [i] pihole-FTL (no-daemon) will be started as pihole
+pihole  | 
+pihole  | s6-rc: info: service _startup successfully started
+pihole  | s6-rc: info: service pihole-FTL: starting
+pihole  | s6-rc: info: service pihole-FTL successfully started
+pihole  | s6-rc: info: service lighttpd: starting
+pihole  | s6-rc: info: service lighttpd successfully started
+pihole  | s6-rc: info: service _postFTL: starting
+pihole  | s6-rc: info: service _postFTL successfully started
+pihole  | s6-rc: info: service legacy-services: starting
+pihole  |   Checking if custom gravity.db is set in /etc/pihole/pihole-FTL.conf
+pihole  | s6-rc: info: service legacy-services successfully started
+pihole  |   [i] Neutrino emissions detected...
+pihole  | 
+[K  [✓] Pulling blocklist source list into range
+pihole  | 
+pihole  |   [i] Preparing new gravity database...
+[K  [✓] Preparing new gravity database
+pihole  |   [i] Creating new gravity databases...
+[K  [✓] Creating new gravity databases
+pihole  |   [i] Using libz compression
+pihole  | 
+pihole  |   [i] Target: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+pihole  |   [i] Status: Pending...
+[K  [✓] Status: Retrieval successful
+pihole  | 
+  [✓] Parsed 121039 exact domains and 0 ABP-style domains (ignored 1 non-domain entries)
+pihole  |       Sample of non-domain entries:
+pihole  |         - "0.0.0.0"
+pihole  | 
+pihole  |   [i] List stayed unchanged
+pihole  | 
+pihole  |   [i] Building tree...
+[K  [✓] Building tree
+pihole  |   [i] Swapping databases...
+[K  [✓] Swapping databases
+pihole  |   [✓] The old database remains available
+pihole  |   [i] Number of gravity domains: 121039 (121039 unique domains)
+pihole  |   [i] Number of exact blacklisted domains: 0
+pihole  |   [i] Number of regex blacklist filters: 0
+pihole  |   [i] Number of exact whitelisted domains: 0
+pihole  |   [i] Number of regex whitelist filters: 0
+pihole  |   [i] Cleaning up stray matter...
+[K  [✓] Cleaning up stray matter
+pihole  | 
+pihole  |   [✓] FTL is listening on port 53
+pihole  |      [✓] UDP (IPv4)
+pihole  |      [✓] TCP (IPv4)
+pihole  |      [✓] UDP (IPv6)
+pihole  |      [✓] TCP (IPv6)
+pihole  | 
+pihole  |   [✓] Pi-hole blocking is enabled
+pihole  | 
+pihole  |   Pi-hole version is v5.18.3 (Latest: v5.18.3)
+pihole  |   web version is v5.21 (Latest: v5.21)
+pihole  |   FTL version is v5.25.2 (Latest: v5.25.2)
+pihole  |   Container tag is: 2024.07.0
+pihole  | 
